@@ -1,0 +1,231 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Technologies
+
+Core Stack
+
+
+
+
+
+Framework: React (18.x) with Vite (5.x) for fast builds and hot reloading.
+
+
+
+Routing: React Router (v6) for SPA navigation.
+
+
+
+State Management: React Context API for global state, useState/useEffect for local state.
+
+
+
+Environment: Use .env with VITE_API_URL for API endpoints (e.g., VITE_API_URL='http://localhost:3000/api').
+
+UI Libraries
+
+
+
+
+
+Material-UI (MUI v5): For customizable components (buttons, forms, grids, drawers).
+
+
+
+Styled-Components: For component-scoped CSS-in-JS styling.
+
+
+
+Framer Motion: For animations (e.g., transitions, hover effects).
+
+
+
+Chart.js + react-chartjs-2: For data visualization (bar, line charts).
+
+
+
+React Hook Form: For efficient form handling.
+
+
+
+React Toastify: For notifications.
+
+Assets
+
+
+
+
+
+Fonts: Use free Google Fonts (e.g., imported via CDN or npm).
+
+
+
+Icons: Use MUI icons or free SVG sources (e.g., Heroicons).
+
+
+
+Images: Optimize with TinyPNG (free) or use SVGs.
+
+Best Practices
+
+Code Quality
+
+
+
+
+
+Modularity: Write reusable, stateless functional components with PropTypes for type checking.
+
+
+
+File Structure: Organize as src/{components, pages, hooks, utils, assets}, e.g., src/pages/Dashboard.jsx.
+
+
+
+Naming: Use PascalCase for components (e.g., DataGrid), camelCase for variables/functions (e.g., handleSubmit).
+
+
+
+Comments: Add JSDoc for complex components, e.g., /** Renders user stats */.
+
+
+
+Linting/Formatting: Use Vite’s default ESLint and Prettier (install: npm install eslint prettier --save-dev).
+
+Performance
+
+
+
+
+
+Render Optimization: Use React.memo, useCallback, useMemo to prevent unnecessary re-renders.
+
+
+
+Lazy Loading: Apply React.lazy and Suspense for non-critical routes or components.
+
+
+
+Bundle Size: Keep bundle <500KB, prefer lightweight libraries (e.g., MUI over Ant Design).
+
+
+
+Asset Optimization: Use SVGs for icons, compress images with TinyPNG.
+
+Accessibility (A11y)
+
+
+
+
+
+Semantic HTML: Use <nav>, <main>, <section> for structure.
+
+
+
+ARIA: Add aria-labels for interactive elements (e.g., aria-label="Submit form").
+
+
+
+Keyboard Navigation: Ensure focusable components (via tabIndex, onKeyDown).
+
+
+
+Contrast: Meet WCAG 4.5:1 contrast ratio (verify with WebAIM Contrast Checker).
+
+
+
+Alt Text: Include alt attributes for images/icons (e.g., alt="Chart icon").
+
+Responsive Design
+
+
+
+
+
+Mobile-First: Use MUI Grid and CSS media queries for responsiveness (target 360x640px to 1440x900px).
+
+
+
+Testing: Verify layouts with Chrome DevTools responsive mode.
+
+
+
+Flexbox/Grid: Prefer CSS Flexbox or Grid for layouts, integrated with MUI.
+
+Component Design
+
+
+
+
+
+Stateless Components: Prefer functional components with hooks over class components.
+
+
+
+Props: Use destructuring and defaultProps for clean interfaces, e.g., const MyComponent = ({ name = '' }) => ....
+
+
+
+Styling: Use Styled-Components for scoped styles, avoid inline CSS except for dynamic values.
+
+
+
+Animations: Apply Framer Motion for transitions (e.g., 0.3-0.5s duration), optimize for 60fps.
+
+Data Handling
+
+
+
+
+
+Mock Data: Use JSON files (e.g., src/mockData.js) with useEffect for static data in early development.
+
+
+
+API Placeholders: Create hooks with dummy fetch calls (e.g., fetch('/api/data')) for future backend integration.
+
+
+
+Context API: Use for global state (e.g., user data), avoid overusing Redux.
+
+Testing
+
+
+
+
+
+Unit Tests: Use Jest (Vite default) for components (e.g., test button clicks).
+
+
+
+Manual Testing: Test responsiveness, navigation, and interactions with Chrome DevTools.
+
+
+
+Error Handling: Include try-catch in async hooks, display user-friendly errors via React Toastify.
+
+Development Guidelines
+
+
+
+
+
+Zero-Budget: Use only free/open-source tools (Vite, MUI, Vercel).
+
+
+
+Version Control: Commit to Git (GitHub, free) with clear messages, e.g., feat: add dashboard component.
+
+
+
+Prompt Specificity: Generate code for specific tasks, e.g., “Create a React component with MUI Grid for a data layout.”
+
+
+
+Code Review: Check for verbosity, remove unused imports, ensure performance (e.g., <2s load times).
+
+
+Debugging: Prompt Cursor for fixes, e.g., “Fix a React Router navigation issue.”
