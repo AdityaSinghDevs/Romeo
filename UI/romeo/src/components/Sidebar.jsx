@@ -26,7 +26,7 @@ import {
 } from '@mui/icons-material';
 
 const MIN_DRAWER_WIDTH = 100;
-const DEFAULT_DRAWER_WIDTH = 250;
+const DEFAULT_DRAWER_WIDTH = 280;
 
 const gradientSlide = keyframes`
   0% { background-position: 0% 50%; }
@@ -115,26 +115,22 @@ const StyledText = styled(Typography)`
 const LogoContainer = styled(Box)`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px;
+  justify-content: flex-start;
+  padding: 12px 8px 12px 16px;
   margin-bottom: 16px;
   border-bottom: 1px solid rgba(97, 1, 148, 0.3);
-  overflow: hidden;
   min-height: 60px;
 `;
 
 const LogoText = styled(Typography)`
   font-family: 'Orbitron', sans-serif;
-  font-size: ${props => props.sidebarWidth < 150 ? '16px' : props.sidebarWidth < 200 ? '18px' : '20px'};
+  font-size: ${props => props.sidebarWidth < 150 ? '16px' : '20px'};
   font-weight: 700;
   color: #610194;
   text-shadow: 0 0 7px rgba(97, 1, 148, 0.6);
-  letter-spacing: ${props => props.sidebarWidth < 200 ? '0' : '0.5px'};
+  letter-spacing: 0.5px;
   white-space: nowrap;
-  margin-right: 8px;
-  max-width: ${props => props.sidebarWidth - 45}px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 1;
 `;
 
 const StyledMenuIcon = styled(IconButton)`
@@ -351,13 +347,25 @@ const Sidebar = ({ open, toggleDrawer, onWidthChange }) => {
   const drawerContent = (
     <>
       <LogoContainer>
-        <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', overflow: 'hidden' }}>
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          width: isCollapsed ? '90%' : '65%', 
+          justifyContent: 'center',
+          overflow: 'visible' 
+        }}>
           <LogoText 
             variant="h1" 
             sidebarWidth={sidebarWidth}
           >
-            ROMEO
+            {isCollapsed ? "R" : "ROMEO"}
           </LogoText>
+        </Box>
+        <Box sx={{ 
+          width: isCollapsed ? '10%' : '35%', 
+          display: 'flex', 
+          justifyContent: 'flex-end' 
+        }}>
           <AnimatedCollapseButton
             onClick={handleToggleCollapse}
             className={isCollapsed ? '' : 'opened'}
