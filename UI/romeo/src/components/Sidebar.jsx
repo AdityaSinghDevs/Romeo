@@ -26,7 +26,7 @@ import {
 } from '@mui/icons-material';
 
 const MIN_DRAWER_WIDTH = 100;
-const DEFAULT_DRAWER_WIDTH = 280;
+const DEFAULT_DRAWER_WIDTH = 320
 
 const gradientSlide = keyframes`
   0% { background-position: 0% 50%; }
@@ -113,24 +113,35 @@ const StyledText = styled(Typography)`
 `;
 
 const LogoContainer = styled(Box)`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 12px 8px 12px 16px;
+  padding: 0;
   margin-bottom: 16px;
   border-bottom: 1px solid rgba(97, 1, 148, 0.3);
-  min-height: 60px;
+  min-height: 80px;
+  width: 100%;
 `;
 
 const LogoText = styled(Typography)`
+  position: absolute;
+  left: ${props => props.isCollapsed ? '50%' : '20px'};
+  transform: ${props => props.isCollapsed ? 'translateX(-50%)' : 'none'};
+  top: 50%;
+  transform: ${props => props.isCollapsed ? 'translate(-50%, -50%)' : 'translateY(-50%)'};
   font-family: 'Orbitron', sans-serif;
-  font-size: ${props => props.sidebarWidth < 150 ? '16px' : '20px'};
+  font-size: ${props => props.fontSize || '28px'};
   font-weight: 700;
   color: #610194;
   text-shadow: 0 0 7px rgba(97, 1, 148, 0.6);
-  letter-spacing: 0.5px;
+  letter-spacing: ${props => props.letterSpacing || '2px'};
   white-space: nowrap;
-  flex: 1;
+  user-select: none;
+  width: ${props => props.width || 'auto'};
+  height: ${props => props.height || 'auto'};
+  line-height: ${props => props.lineHeight || 'normal'};
+  padding: ${props => props.padding || '0'};
 `;
 
 const StyledMenuIcon = styled(IconButton)`
@@ -347,24 +358,29 @@ const Sidebar = ({ open, toggleDrawer, onWidthChange }) => {
   const drawerContent = (
     <>
       <LogoContainer>
-        <Box sx={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          width: isCollapsed ? '90%' : '65%', 
-          justifyContent: 'center',
-          overflow: 'visible' 
-        }}>
-          <LogoText 
-            variant="h1" 
-            sidebarWidth={sidebarWidth}
-          >
-            {isCollapsed ? "R" : "ROMEO"}
-          </LogoText>
-        </Box>
+        <LogoText 
+          variant="h1" 
+          isCollapsed={isCollapsed}
+          fontSize="50px"
+          letterSpacing="4px"
+          width="auto"
+          height="40px"
+          lineHeight="40px"
+          padding="0 1px"
+          sx={{
+            textAlign: 'center',
+          }}
+        >
+          {isCollapsed ? "R" : "ROMEO"}
+        </LogoText>
         <Box sx={{ 
           width: isCollapsed ? '10%' : '35%', 
           display: 'flex', 
-          justifyContent: 'flex-end' 
+          justifyContent: 'flex-end',
+          position: 'absolute',
+          right: '10px',
+          top: '50%',
+          transform: 'translateY(-50%)'
         }}>
           <AnimatedCollapseButton
             onClick={handleToggleCollapse}
